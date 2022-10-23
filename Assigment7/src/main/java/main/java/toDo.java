@@ -42,7 +42,13 @@ public class toDo {
         System.out.println("3. Remove item from list");
         System.out.println();
         System.out.print("Enter choice: ");
-        int choice = Scanner.nextInt();
+        int choice;
+		try {
+			choice = Scanner.nextInt();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         return choice;
     }
 
