@@ -1,95 +1,47 @@
 package main.java;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.ArrayList; import java.util.Scanner;
 
 
 public class toDo {
+public static void main(String[] args) {
+ToDoList todo=new ToDoList(); int big=0;
+while(big==0){
+	
+          //Menu Selection
+System.out.print("\n********** Todo list **********\n");
+System.out.print("\n1.Add item \n"); System.out.print("\n2.Delete item \n"); System.out.print("\n3.List of todo Item\n"); System.out.print("\nEnter your choice: \n"); Scanner input=new Scanner(System.in);
+int choice =input.nextInt(); input.nextLine();
 
-    private static List<String> currentList = new ArrayList<String>();
-    public static void main(String[] args) {
-
-        int menuItem = -1;
-        while (menuItem != 0) {
-            menuItem = menu();
-            switch (menuItem) {
-            case 1:
-                showList();
-                break;
-            case 2:
-                addItem();
-                break;
-            case 3:
-                removeItem();
-                break;
-            case 0:
-                break;
-            default:
-                System.out.println("Enter a valid option");
-            }
-        }
-    }
-
-    public static int menu() {
-        System.out.println();
-        System.out.println("----------------------");
-        System.out.println("Main Menu");
-        System.out.println("----------------------");
-        System.out.println("0. Exit the program");
-        System.out.println("1. Display to-do list");
-        System.out.println("2. Add item to list");
-        System.out.println("3. Remove item from list");
-        System.out.println();
-        System.out.print("Enter choice: ");
-        int choice;
-		try {
-			choice = Scanner.nextInt();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        return choice;
-    }
-
-    public static void showList() {
-        System.out.println();
-        System.out.println("----------------------");       
-        System.out.println("To-Do List");
-        System.out.println("----------------------");
-        int number = 0;
-        for (String item : currentList) {
-            System.out.println(++number + " " + item);
-        }
-        System.out.println("----------------------"); 
-
-
-    }
-
-    public static void addItem() {
-        System.out.println("Add Item");
-        System.out.println("----------------------");
-        System.out.print("Enter an item: ");
-        Scanner scanner = new Scanner(System.in);
-        String item = scanner.nextLine();
-        currentList.add(item);
-        showList();
-    }
-
-    public static void removeItem() {
-        System.out.println("Remove Item");
-        System.out.println("----------------------");
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("What do you want to remove?");
-        int index = scanner.nextInt();
-        if((index-1)<0 || index>currentList.size()) {
-            System.out.println("Wrong index number! Please enter in range of 1 to "+currentList.size());            
-        }else {
-            currentList.remove(index-1);
-        }
-        System.out.println("----------------------");
-        showList();
-
-
-    }
+          //What happens when selecting a choice
+if(choice==1){
+System.out.println("Enter item:");
+String item=input.nextLine(); todo.addItem(item);
+System.out.println(" item added to list!");
 }
+else if(choice==2){
+todo.listAll();
+System.out.println("Enter item number to delete"); int n=input.nextInt();
+todo.deleteItem(n-1);
+System.out.println(" item deleted from list!");
+}
+else if(choice==3){
+          todo.listAll();
+}else{big=1;}} }
+}
+class ToDoList{
+	
+     // Array list of items
+ArrayList<String> todo = new ArrayList<String>();
+   
+//Adding item function
+public void addItem(String item){
+this.todo.add(item); }
+
+// Delete item function
+public void deleteItem(int num){ this.todo.remove(num);
+}
+public void listAll(){
+for (int i = 0; i < this.todo.size(); i++) {
+System.out.println((i+1)+"."+this.todo.get(i)); }
+} }
