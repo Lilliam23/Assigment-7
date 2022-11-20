@@ -2,10 +2,45 @@ pipeline {
     agent any
 
     stages {
-        stage('build') {
+        stage('Validate') {
             steps {
                 git 'https://github.com/Lilliam23/Assigment-7.git'
-               sh './mvnw clean compile'
+               sh 'mvn validate'
+               
+            }
+        }
+        stage('Compile') {
+            steps {
+                git 'https://github.com/Lilliam23/Assigment-7.git'
+               sh 'mvn clean compile'
+               
+            }
+        }
+        stage('Test') {
+            steps {
+                git 'https://github.com/Lilliam23/Assigment-7.git'
+               sh 'mvn test'
+               
+            }
+        }
+         stage('package') {
+            steps {
+                git 'https://github.com/Lilliam23/Assigment-7.git'
+               sh 'mvn package'
+               
+            }
+        }
+        stage('install') {
+            steps {
+                git 'https://github.com/Lilliam23/Assigment-7.git'
+               sh 'mvn install'
+               
+            }
+        }
+        stage('deploy') {
+            steps {
+                git 'https://github.com/Lilliam23/Assigment-7.git'
+               sh 'mvn deploy'
                
             }
         }
